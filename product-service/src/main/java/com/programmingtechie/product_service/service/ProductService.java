@@ -1,6 +1,5 @@
 package com.programmingtechie.product_service.service;
 
-import com.mongodb.annotations.Sealed;
 import com.programmingtechie.product_service.dto.ProductRequest;
 import com.programmingtechie.product_service.dto.ProductResponse;
 import com.programmingtechie.product_service.model.Product;
@@ -8,7 +7,6 @@ import com.programmingtechie.product_service.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
 

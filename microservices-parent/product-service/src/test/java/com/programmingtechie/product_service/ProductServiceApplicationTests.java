@@ -1,7 +1,9 @@
 package com.programmingtechie.product_service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mongodb.assertions.Assertions;
 import com.programmingtechie.product_service.dto.ProductRequest;
+import com.programmingtechie.product_service.repository.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +36,8 @@ class ProductServiceApplicationTests {
 	private MockMvc mockMvc;
 	@Autowired
 	private ObjectMapper objectMapper;
-
+	@Autowired
+	private ProductRepository productRepository;
 
 	@DynamicPropertySource
 	static void setProperties(DynamicPropertyRegistry dymDynamicPropertyRegistry) {
@@ -50,6 +53,7 @@ class ProductServiceApplicationTests {
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(productRequestString))
 				.andExpect(status().isCreated());
+		Assertions.assertTrue(productRepository.findAll().size() ==1);
 	}
 
 	private ProductRequest getProductRequest() {
